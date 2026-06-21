@@ -5,7 +5,17 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com)
 
-基于 **Pandas 精确计算 + LLM 语义解读** 的 CSV/Excel 数据分析引擎。12 种多维分析，101 项测试，6 层安全纵深防御，API 服务 + Agent Tool + CLI 三种部署模式。
+基于 **Pandas 精确计算 + LLM 语义解读** 的企业经营数据分析引擎，**专注销售/财务/运营场景**。12 种多维分析，101 项测试，6 层安全纵深防御。API 服务 + Agent Tool + CLI 三种部署模式。
+
+### ⚠️ 适用领域
+
+本 Skill 的列语义识别基于**企业经营关键词字典**（收入/成本/利润/产品/区域/客户/渠道），**最适合**以下场景：
+- 📊 销售数据（销售额/销量/单价/区域/产品）
+- 💰 财务数据（收入/成本/利润/毛利）
+- 🏭 运营数据（客户/渠道/库存/供应链）
+- 👤 客户分析（RFM 分层/复购/留存）
+
+**不适用**于档案元数据、日志、JSON嵌套、非结构化文本等通用CSV。如列名不在字典中，将被标记为 `ignore` 并跳过深度分析。可通过 `column_hints` 参数手动标注列语义来扩展支持。
 
 ---
 
