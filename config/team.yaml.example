@@ -1,0 +1,69 @@
+# 团队配置文件 — CSV 数据分析 Skill
+# 用于多租户隔离、角色权限、用量配额管理
+#
+# 使用方式:
+#   1. 复制本文件为 team.yaml
+#   2. 将 api_key 替换为真实的 API Key
+#   3. 或者设置环境变量后使用 ${VAR} 占位符
+
+teams:
+  - id: "team_default"
+    name: "默认团队"
+    admin_contact: "admin@example.com"
+    # 月度预算上限 (USD)
+    monthly_budget: 200.0
+    # 团队级并发上限
+    max_concurrent: 10
+    # 数据保留策略: none(立即清理) / session(会话结束) / 24h
+    data_retention: "none"
+
+    members:
+      - id: "admin_01"
+        name: "管理员"
+        role: admin
+        api_key: "sk-admin-your-key-here"          # ← 替换为真实 Key
+        default_depth: standard
+        daily_limit: 200
+        output_locale: zh
+
+      - id: "analyst_01"
+        name: "数据分析师"
+        role: analyst
+        api_key: "sk-analyst-your-key-here"         # ← 替换为真实 Key
+        default_depth: deep
+        daily_limit: 100
+        output_locale: zh
+
+      - id: "viewer_01"
+        name: "业务查看者"
+        role: viewer
+        api_key: "sk-viewer-your-key-here"          # ← 替换为真实 Key
+        default_depth: quick
+        daily_limit: 30
+        output_locale: zh
+
+# 角色权限矩阵
+roles:
+  admin:
+    can_use_depth: [quick, standard, deep]
+    can_export_charts: true
+    can_see_raw_data: false
+    can_configure: true
+
+  analyst:
+    can_use_depth: [quick, standard, deep]
+    can_export_charts: true
+    can_see_raw_data: false
+    can_configure: false
+
+  viewer:
+    can_use_depth: [quick]
+    can_export_charts: false
+    can_see_raw_data: false
+    can_configure: false
+
+# 全局速率限制
+rate_limits:
+  requests_per_second: 5
+  burst_size: 10
+  cooldown_seconds: 1

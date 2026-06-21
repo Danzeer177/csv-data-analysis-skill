@@ -1,0 +1,34 @@
+# CSV 数据分析 Skill — 锁定依赖版本
+# 生成方式: pip freeze > requirements.lock.txt
+# 安装: pip install -r requirements.lock.txt
+# 安全校验: pip install --require-hashes -r requirements.lock.txt (可选)
+#
+# 定期更新建议：
+#   pip-audit -r requirements.lock.txt    # 扫描已知漏洞
+#   pip-compile requirements.in           # 使用 pip-tools 重新编译
+#
+# 最低 Python 版本: 3.10
+
+# ========== 数据处理核心 ==========
+pandas==2.2.3
+numpy==2.1.3
+openpyxl==3.1.5         # Excel .xlsx 读取
+
+# ========== 数据模型 ==========
+pydantic==2.10.4
+
+# ========== 编码检测 ==========
+chardet==5.2.0          # 自动检测文件编码
+
+# ========== 统计分析 ==========
+scipy==1.14.1           # 相关性 p-value、正态性检验、线性回归
+
+# ========== 可视化（可选） ==========
+matplotlib==3.9.3
+seaborn==0.13.2
+
+# ========== 工作流编排 ==========
+langgraph==0.2.56
+
+# ========== 配置解析 ==========
+pyyaml==6.0.2           # team.yaml 配置解析

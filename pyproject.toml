@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csv-data-analysis-skill"
+version = "1.0.0"
+description = "基于 Pandas + LangGraph 的 CSV/Excel 数据分析引擎 — 12 种多维分析、LLM 语义解读、多租户鉴权"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "CSV Data Analysis Skill Team"}
+]
+keywords = ["csv", "data-analysis", "pandas", "langgraph", "llm", "agent"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "pydantic>=2.0",
+    "langgraph>=0.2",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "chardet>=5.0",
+    "openpyxl>=3.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.104",
+    "uvicorn>=0.24",
+    "python-multipart>=0.0.6",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "httpx>=0.25",
+]
+all = [
+    "csv-data-analysis-skill[api,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/csv-data-analysis-skill"
+Repository = "https://github.com/your-org/csv-data-analysis-skill.git"
+Issues = "https://github.com/your-org/csv-data-analysis-skill/issues"
+
+[tool.setuptools]
+packages = ["scripts"]
+
+[tool.setuptools.package-dir]
+"scripts" = "scripts"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
